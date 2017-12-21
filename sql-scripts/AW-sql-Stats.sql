@@ -1,5 +1,5 @@
 /*
-STATS 
+STATS + AWCharacters and 
 
 Cool+1 Hard=0 Hot+1 Sharp+2 Weird-1
 Cool+1 Hard+1 Hot=0 Sharp+2 Weird-1
@@ -87,3 +87,23 @@ join AWGear
 on AWCharacterGears.GearId=AWGear.id
 join AWCharacters
 on AWCharacterGears.Charid=AWCharacters.id ; 
+
+CREATE TABLE IF NOT EXISTS "AWCharacterMoves" (
+id integer primary key autoincrement,
+Charid integer,
+MoveId integer,
+CampaignId integer, 
+
+FOREIGN KEY (Charid) REFERENCES AWCharacters(id),
+FOREIGN KEY (MoveId) REFERENCES AWMoves(id),
+FOREIGN KEY (Campaignid) REFERENCES AWCampaign(id)
+);
+
+insert into AWCharacterMoves (charid,MoveId,campaignid) values(1,40,1);
+insert into AWCharacterMoves (charid,MoveId,campaignid) values(1,34,1);
+
+create view viewAWCharacterMoves as select AWCharacterMoves.id, AWCharacters.name, AWMoves.name, AWMoves.description from AWCharacterMoves
+join AWMoves
+on AWCharacterMoves.MoveId=AWMoves.id
+join AWCharacters
+on AWCharacterMoves.Charid=AWCharacters.id
