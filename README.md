@@ -10,6 +10,9 @@ Apocalypse World database for v1.0
 	- AWCharNames (Angel Name - 28 )
 	- AWKeys (1)
 
+Check the wiki on how to use the db repository
+https://github.com/peileppe/Apocalypse/wiki
+
 - To do 
 	- adding other classes (currently only Angel is featured)
 	- adding tables for Gears (weapons, etc ...)
