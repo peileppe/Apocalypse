@@ -1,19 +1,22 @@
+/* merging ALL SQL script
+ * Jan-10 2018
+ */
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 CREATE TABLE AWClasses (id integer primary key autoincrement, name text, description text );
 INSERT INTO "AWClasses" VALUES(-2,'special','special moves');
 INSERT INTO "AWClasses" VALUES(-1,'basic','basic moves');
-INSERT INTO "AWClasses" VALUES(1,'Angel','When you’re lying in the dust of Apocalypse World guts aspilled, for whom do you pray? the gods? they’re long gone. Your beloved comrades? Fuckers all, or you wouldn’t be here to begin with. Your precious old mother? She’s a darling but she can’t put an intestine back inside so it’ll stay. No you pray for some grinning kid or veteran or just someone with a heartshocker and a hand with sutures and a 6-pack of morphine. And when that someone comes, that’s an angel.');
-INSERT INTO "AWClasses" VALUES(2,'Battlebabe','Even in a place as dangerous as Apocalypse World, battlebabes are, well. They’re the ones you should walk away from, eyes down, but you can’t. They’re the ones like the seductive blue crackling light, y’know? You mistake looking at them for falling in love, and you get too close and it’s a zillion volts and your wings burn off like paper. Dangerous.');
-INSERT INTO "AWClasses" VALUES(3,'Brainer','Brainers are the weird psycho psychic mindfucks of Apocalypse World. They have brain control, puppet strings, creepy hearts, dead souls, and eyes like broken things. They stand in your peripheral vision and whisper into your head, staring. They clamp lenses over your eyes and read your secrets. They’re just the sort of tasteful accoutrement that no well-appointed hardhold can do without.');
-INSERT INTO "AWClasses" VALUES(4,'Chopper','Apocalypse World is all scarcity, of course it is. There’s not enough wholesome food, not enough untainted water, not enough security, not enough light, not enough electricity, not enough children, not enough hope. However, the Golden Age Past did leave us two things: enough gasoline, enough bullets. Come the end, I guess the fuckers didn’t need them like they thought they would. So chopper, there you are. Enough for you.');
+INSERT INTO "AWClasses" VALUES(1,'Angel','When you''re lying in the dust of Apocalypse World guts aspilled, for whom do you pray? the gods? they''re long gone. Your beloved comrades? Fuckers all, or you wouldn''t be here to begin with. Your precious old mother? She''s a darling but she can''t put an intestine back inside so it''ll stay. No you pray for some grinning kid or veteran or just someone with a heartshocker and a hand with sutures and a 6-pack of morphine. And when that someone comes, that''s an angel.');
+INSERT INTO "AWClasses" VALUES(2,'Battlebabe','Even in a place as dangerous as Apocalypse World, battlebabes are, well. They''re the ones you should walk away from, eyes down, but you can''t. They''re the ones like the seductive blue crackling light, y''know? You mistake looking at them for falling in love, and you get too close and it''s a zillion volts and your wings burn off like paper. Dangerous.');
+INSERT INTO "AWClasses" VALUES(3,'Brainer','Brainers are the weird psycho psychic mindfucks of Apocalypse World. They have brain control, puppet strings, creepy hearts, dead souls, and eyes like broken things. They stand in your peripheral vision and whisper into your head, staring. They clamp lenses over your eyes and read your secrets. They''re just the sort of tasteful accoutrement that no well-appointed hardhold can do without.');
+INSERT INTO "AWClasses" VALUES(4,'Chopper','Apocalypse World is all scarcity, of course it is. There''s not enough wholesome food, not enough untainted water, not enough security, not enough light, not enough electricity, not enough children, not enough hope. However, the Golden Age Past did leave us two things: enough gasoline, enough bullets. Come the end, I guess the fuckers didn''t need them like they thought they would. So chopper, there you are. Enough for you.');
 INSERT INTO "AWClasses" VALUES(5,'Driver','Came the apocalypse, and the infrastructure of the Golden Age tore apart. Roads heaved and split. Lines of life and communication shattered. Cities, cut off from one another, raged like smashed anthills, then burned, then fell. A few living still remember it: every horizon scorching hot with civilization in flames, light to put out the stars and moon, smoke to put out the sun. In Apocalypse World the horizons are dark, and no roads go to them.');
-INSERT INTO "AWClasses" VALUES(6,'Gunlugger','Apocalypse World is a mean, ugly, violent place. Law and society have broken down completely. What’s yours is yours only while you can hold it in your hands. There’s no peace. There’s no stability but what you carve, inch by inch, out of the concrete and dirt, and then defend with murder and blood. Sometimes the obvious move is the right one.');
+INSERT INTO "AWClasses" VALUES(6,'Gunlugger','Apocalypse World is a mean, ugly, violent place. Law and society have broken down completely. What''s yours is yours only while you can hold it in your hands. There''s no peace. There''s no stability but what you carve, inch by inch, out of the concrete and dirt, and then defend with murder and blood. Sometimes the obvious move is the right one.');
 INSERT INTO "AWClasses" VALUES(7,'Hardholder','There is no government, no society, in Apocalypse World. When hardholders ruled whole continents, when they waged war on the other side of the world instead of with the hold across the burn-flat, when their armies numbered in the hundreds of thousands and they had fucking boats to hold their fucking airplanes on, that was the golden age of legend. Now, anyone with a concrete compound and a gang of gunluggers can claim the title. What other authority is there?');
-INSERT INTO "AWClasses" VALUES(8,'Hocus','Now it should be crystal fucking obvious that the gods have abandoned Apocalypse World. Maybe in the golden age, with its one nation under god and its in god we trust, maybe then the gods were real. Fucked if I know. All I know is that now they’re gone daddy gone. My theory is that these weird hocus fuckers, when they say ''the gods'' what they really mean is the miasma left over from the explosion of psychic hate and desperation that gave Apocalypse World its birth. Friends, that’s our creator now.');
-INSERT INTO "AWClasses" VALUES(9,'Operator','In Apocalypse World, here’s what you’ve got, right? You’ve got Dremmer and Balls on one side, warlord slaver and his skinny fucking enforcer, raiding from their stronghold of concrete and iron spikes. On the other side you’ve got the barge people, living their short disease-crippled lives up and down the dead poisoned river. Further along and you’ve got Lighthouse, a men-and-women hunger cult gone wrong barricaded in on the edge of the breeding pit burn flats. You, you just want to make your way and have some freedom — but this is what you’ve got to work with. Not fucking rosy.');
-INSERT INTO "AWClasses" VALUES(10,'Savvyhead','If there’s one fucking thing you can count on in Apocalypse World, it’s: things break.');
-INSERT INTO "AWClasses" VALUES(11,'Skinner','Even in the filth of Apocalypse World, there’s food that isn’t death on a spit, music that isn’t shrieking hyenas, thoughts that aren’t afraid, bodies that aren’t used meat, sex that isn’t rutting, dancing that’s real. There are moments that are more than stench, smoke, rage and blood. Anything beautiful left in this ugly ass world, skinners hold it. Will they share it with you? What do you offer them?');
+INSERT INTO "AWClasses" VALUES(8,'Hocus','Now it should be crystal fucking obvious that the gods have abandoned Apocalypse World. Maybe in the golden age, with its one nation under god and its in god we trust, maybe then the gods were real. Fucked if I know. All I know is that now they''re gone daddy gone. My theory is that these weird hocus fuckers, when they say ''the gods'' what they really mean is the miasma left over from the explosion of psychic hate and desperation that gave Apocalypse World its birth. Friends, that''s our creator now.');
+INSERT INTO "AWClasses" VALUES(9,'Operator','In Apocalypse World, here''s what you''ve got, right? You''ve got Dremmer and Balls on one side, warlord slaver and his skinny fucking enforcer, raiding from their stronghold of concrete and iron spikes. On the other side you''ve got the barge people, living their short disease-crippled lives up and down the dead poisoned river. Further along and you''ve got Lighthouse, a men-and-women hunger cult gone wrong barricaded in on the edge of the breeding pit burn flats. You, you just want to make your way and have some freedom â€” but this is what you''ve got to work with. Not fucking rosy.');
+INSERT INTO "AWClasses" VALUES(10,'Savvyhead','If there''s one fucking thing you can count on in Apocalypse World, it''s: things break.');
+INSERT INTO "AWClasses" VALUES(11,'Skinner','Even in the filth of Apocalypse World, there''s food that isn''t death on a spit, music that isn''t shrieking hyenas, thoughts that aren''t afraid, bodies that aren''t used meat, sex that isn''t rutting, dancing that''s real. There are moments that are more than stench, smoke, rage and blood. Anything beautiful left in this ugly ass world, skinners hold it. Will they share it with you? What do you offer them?');
 CREATE TABLE "AWMoves" (
 id integer primary key autoincrement, 
 name text, 
@@ -55,7 +58,7 @@ INSERT INTO "AWMoves" VALUES(30,'Go aggro on someone',-1,NULL);
 INSERT INTO "AWMoves" VALUES(31,'Go into a holding''s market',-2,NULL);
 INSERT INTO "AWMoves" VALUES(32,'Good in the clinch',5,NULL);
 INSERT INTO "AWMoves" VALUES(33,'Heal another character''s harm',-2,NULL);
-INSERT INTO "AWMoves" VALUES(34,'Healing touch',1,'when  you  put  your  hands  skin-to-skin  on  a wounded person and open your brain to them, roll+weird. On a  10+,  heal  1  segment.  On  a  7–9,  heal  1  segment,  but  you’re acting  under  fire  from  your  patient’s  brain.  On  a  miss:  first, you  don’t  heal  them.  Second,  you’ve  opened  both  your  brain and theirs to the world’s psychic maelstrom, without protection or  preparation.  For  you,  and  for  your  patient  if  your  patient’s a fellow player’s character, treat it as though you’ve made that move  and  missed  the  roll.  For  patients  belonging  to  the  MC,  their experience and fate are up to the MC.');
+INSERT INTO "AWMoves" VALUES(34,'Healing touch',1,'when  you  put  your  hands  skin-to-skin  on  a wounded person and open your brain to them, roll+weird. On a  10+,  heal  1  segment.  On  a  7â€“9,  heal  1  segment,  but  you''re acting  under  fire  from  your  patient''s  brain.  On  a  miss:  first, you  don''t  heal  them.  Second,  you''ve  opened  both  your  brain and theirs to the world''s psychic maelstrom, without protection or  preparation.  For  you,  and  for  your  patient  if  your  patient''s a fellow player''s character, treat it as though you''ve made that move  and  missed  the  roll.  For  patients  belonging  to  the  MC,  their experience and fate are up to the MC.');
 INSERT INTO "AWMoves" VALUES(35,'Help or interfere',-1,NULL);
 INSERT INTO "AWMoves" VALUES(36,'Hypnotic',11,NULL);
 INSERT INTO "AWMoves" VALUES(37,'Ice cold',2,NULL);
@@ -80,7 +83,7 @@ INSERT INTO "AWMoves" VALUES(55,'Pack alpha',4,NULL);
 INSERT INTO "AWMoves" VALUES(56,'Perfect instincts',2,NULL);
 INSERT INTO "AWMoves" VALUES(57,'Prepared for the inevitable',6,NULL);
 INSERT INTO "AWMoves" VALUES(58,'Preternatural at-will brain attunement',3,NULL);
-INSERT INTO "AWMoves" VALUES(59,'Professional compassion',1,'you can choose to roll+sharp instead of roll+Hx when you help someone who’s rolling');
+INSERT INTO "AWMoves" VALUES(59,'Professional compassion',1,'you can choose to roll+sharp instead of roll+Hx when you help someone who''s rolling');
 INSERT INTO "AWMoves" VALUES(60,'Provide covering fire',-2,NULL);
 INSERT INTO "AWMoves" VALUES(61,'Read a charged situation',-1,NULL);
 INSERT INTO "AWMoves" VALUES(62,'Read a person',-1,NULL);
@@ -90,7 +93,7 @@ INSERT INTO "AWMoves" VALUES(65,'Seeing souls',8,NULL);
 INSERT INTO "AWMoves" VALUES(66,'Seduce or manipulate someone',-1,NULL);
 INSERT INTO "AWMoves" VALUES(67,'Seize something by force',-1,NULL);
 INSERT INTO "AWMoves" VALUES(68,'Session end',-1,NULL);
-INSERT INTO "AWMoves" VALUES(69,'Sixth sense',1,'when you open your brain to the world’s psychic maelstrom, roll+sharp instead of roll+weird.');
+INSERT INTO "AWMoves" VALUES(69,'Sixth sense',1,'when you open your brain to the world''s psychic maelstrom, roll+sharp instead of roll+weird.');
 INSERT INTO "AWMoves" VALUES(70,'Spooky intense',10,NULL);
 INSERT INTO "AWMoves" VALUES(71,'Stay the fuck down',-2,NULL);
 INSERT INTO "AWMoves" VALUES(72,'Suffer harm',-2,NULL);
@@ -334,7 +337,7 @@ frontId INTEGER,
 FOREIGN KEY (campaignId) REFERENCES AWCampaign(id)
 FOREIGN KEY (frontId) REFERENCES AWFronts(id)
 );
-INSERT INTO "AWCampaignFronts" VALUES(1,1,12,'This is an Apocalypse World 1-shot or con scenario. I call it “Blind-blue & Hatchet City” but whatever. It''s for MC + 3–5 players; it''s probably best with all 5',1);
+INSERT INTO "AWCampaignFronts" VALUES(1,1,12,'This is an Apocalypse World 1-shot or con scenario. I call it Blind-blue & Hatchet City but whatever. It''s for MC + 3-5 players; it''s probably best with all 5',1);
 CREATE TABLE "AWCharacters" (
 id integer primary key autoincrement, 
 name text,
