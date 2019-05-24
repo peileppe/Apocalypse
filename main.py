@@ -44,17 +44,18 @@ class player():
             self.characters.append(character('name='+str(i), k[1]))
         return
 
+def listing(ul):
+    print ('< %s   \t%s   > \t%s\t%s' % ('name','classe','level','hp'))
+    print ('< %s   \t%s   > \t%s\t%s' % ('=======','=======','=======','======='))
+    for i in ul:
+        print(i.display())
+    return
+
 def queryDb(db_connexion, query):
     cur = db_connexion.cursor()
     cur.execute(query)
     result=cur.fetchall()
     return result
-
-def listing(ul):
-    print ('< %s   \t%s   > \t%s\t%s' % ('name','classe','level','hp'))
-    for i in ul:
-        print(i.display())
-    return
 
 def main():
     try:
