@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# call
+#  main.py
 # ===================================================================
 import readline
 import sqlite3
@@ -25,9 +25,7 @@ def queryDb(db_connexion, query):
 
 def load(ul):
     for i in ul:
-        print (i.name+' '+i.classe) # will display correctly
-        print (' %s --  %s ' % (i.name,i.classe)) # will display correctly
-        print (i.name, i.classe) # will show u something
+        print ('%s --  %s' % (i.name,i.classe))
     return
 
 def main():
@@ -35,13 +33,10 @@ def main():
         sqlDb = sqlite3.connect('AW-db/AW.db')
         q0 = 'select id, name from AWClasses where id > 0 order by name ;'
         r1=queryDb(sqlDb, q0)
-        for k in r1:
-            print(k[1])
     except EOFError: # KeyboardInterrupt:
         print(EOFError)
     u = []
     for i, k in enumerate(r1):
-        print (str(k[0])+' '+k[1])
         u.append(unit('name='+str(i), k[1]))
     load(u)
     print('Game over')     
