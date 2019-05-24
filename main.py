@@ -21,7 +21,7 @@ class unit(object):
     def found(self, s):
         return (self.active and (s.lower() in self.name.lower()))
     def display(self):
-        if self.active: return ('- %s - %s ' % (self.name,self.classe))
+        if self.active: return ('<%s  \t%s   >' % (self.name,self.classe))
 
 class character(unit):
     def __init__(self, n, c):
@@ -31,7 +31,8 @@ class character(unit):
         self.countdown = {}
         return
     def display(self):
-        return unit.display(self)+'['+str(self.level)+']['+str(self.hp)+']'
+        #return unit.display(self)+'['+str(self.level)+']['+str(self.hp)+']'
+        return ('%s \t[%d]\t[%d]' % (unit.display(self),self.level,self.hp))
 
 class player():
     def __init__(self):
@@ -50,6 +51,7 @@ def queryDb(db_connexion, query):
     return result
 
 def listing(ul):
+    print ('< %s   \t%s   > \t%s\t%s' % ('name','classe','level','hp'))
     for i in ul:
         print(i.display())
     return
