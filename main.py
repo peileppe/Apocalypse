@@ -21,18 +21,36 @@ class unit(object):
     def found(self, s):
         return (self.active and (s.lower() in self.name.lower()))
     def display(self):
-        if self.active: return self.name+' '+self.classe+' '
+        if self.active: return ('- %s - %s ' % (self.name,self.classe))
+
+class character(unit):
+    def __init__(self, n, c):
+        unit.__init__(self, n,c)
+        self.level = 1
+        self.hp = 10
+        self.countdown = {}
+        return
+    def display(self):
+        return unit.display(self)+'['+str(self.level)+']['+str(self.hp)+']'
+
+class player():
+    def __init__(self):
+        self.characters = []
+        self.countdowns = {}
+        return
+    def starterPack(self, chList):
+        for i, k in enumerate(chList):
+            self.characters.append(character('name='+str(i), k[1]))
+        return
 
 def queryDb(db_connexion, query):
-    #will return a list as result 
     cur = db_connexion.cursor()
     cur.execute(query)
     result=cur.fetchall()
     return result
 
-def load(ul):
+def listing(ul):
     for i in ul:
-        #print ('%s --  %s' % (i.name,i.classe))
         print(i.display())
     return
 
@@ -43,11 +61,9 @@ def main():
         r1=queryDb(sqlDb, q0)
     except IOError:
         print(IOError)
-    u = []
-    for i, k in enumerate(r1):
-        u.append(unit('name='+str(i), k[1]))
-    load(u)
-    print('Game over')     
+    p = player()
+    p.starterPack(r1)
+    listing(p.characters)
     sqlDb.close() 
     return
 
