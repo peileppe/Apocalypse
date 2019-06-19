@@ -5,7 +5,7 @@
 
 import readline
 import sqlite3
-#from liblog import logger
+from aw_log import logger
 
 try:
     input = raw_input

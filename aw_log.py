@@ -3,7 +3,7 @@
 import logging
 
 LOG_FORMAT = '%(asctime)s - %(levelname)s  [%(name)s] %(funcName)s -> %(message)s'
-logging.basicConfig(filename = 'console-mok.log',  
+logging.basicConfig(filename = 'console-aw.log',  
                             level = logging.DEBUG,
                             format = LOG_FORMAT)
 logger = logging.getLogger(__name__)
