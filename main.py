@@ -1,10 +1,10 @@
 #!/usr/bin/python
 #  main.py
 # ===================================================================
-# Fri May 24 14:20:53 CEST 2019
+# Wed Jun 19 15:54:45 CEST 2019
 
 import readline
-import sqlite3
+import json
 from aw_log import logger
 
 try:
@@ -29,10 +29,14 @@ class character(unit):
         self.level = 1
         self.hp = 10
         self.countdown = {}
+        self.hard = 0
+        self.sharp= 0
+        self.hot  = 0
+        self.cool = 0
+        self.weird= 0
         return
     def display(self):
-        #return unit.display(self)+'['+str(self.level)+']['+str(self.hp)+']'
-        return ('%s \t[%d]\t[%d]' % (unit.display(self),self.level,self.hp))
+        return unit.display(self)+'['+str(self.level)+']['+str(self.hp)+']'+'hard:'+str(self.hard)+'sharp:'+str(self.sharp)+'hot:'+str(self.hot)+'cool:'+str(self.cool)
 
 class player():
     def __init__(self):
@@ -45,23 +49,14 @@ class player():
         return
 
 def listing(ul):
-    print ('< %s   \t%s   > \t%s\t%s' % ('name','classe','level','hp'))
-    print ('< %s   \t%s   > \t%s\t%s' % ('=======','=======','=======','======='))
     for i in ul:
         print(i.display())
     return
 
-def queryDb(db_connexion, query):
-    cur = db_connexion.cursor()
-    cur.execute(query)
-    result=cur.fetchall()
-    return result
-
 def main():
     try:
-        sqlDb = sqlite3.connect('AW-db/AW.db')
-        q0 = 'select id, name from AWClasses where id > 0 order by name ;'
-        r1=queryDb(sqlDb, q0)
+        with open('AW-db/aw_classes.json') as f:
+            awcl=json.load(f)
     except IOError:
         print(IOError)
     p = player()

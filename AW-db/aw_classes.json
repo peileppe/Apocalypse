@@ -1,11 +1,9 @@
-{
-"angel":        {"stat": [ 0, 2, 1, 1, 1], "skill": "cure"},
-"battlebabe":   {"stat": [ 1, 1, 1, 3,-1], "skill": "doublestrike"}, 
-"brainer":      {"stat": [ 1, 2, 0,-1, 3], "skill": "dominate"},
-"chopper":      {"stat": [ 2, 1,-1, 2, 1], "skill": "leader"},
-"gunlugger":    {"stat": [ 3, 0, 0, 2, 0], "skill": "rage"}, 
-"hocus":        {"stat": [-1, 2, 1, 0, 3], "skill": "confuse"},
-"operator":     {"stat": [ 1, 2, 0, 0, 2], "skill": "diplomacy"}
-"savvyhead":    {"stat": [ 1, 2, 0, 1, 1], "skill": "hack"},    
-"skinner":      {"stat": [ 0, 0, 3, 1, 1], "skill": "charm"}
-}
+{ "angel":{"stat": [ 0, 2, 1, 1, 1],"skill":"cure"},
+"battlebabe":{"stat": [ 1, 1, 1, 3,-1],"skill":"doublestrike"}, 
+"brainer":{"stat": [ 1, 2, 0,-1, 3],"skill":"dominate"},
+"chopper":{"stat": [ 2, 1,-1, 2, 1],"skill":"leader"},
+"gunlugger":{"stat": [ 3, 0, 0, 2, 0],"skill":"rage"}, 
+"hocus":{"stat": [-1, 2, 1, 0, 3],"skill":"confuse"},
+"operator":{"stat": [ 1, 2, 0, 0, 2],"skill":"diplomacy"},
+"savvyhead":{"stat": [ 1, 2, 0, 1, 1],"skill":"hack"},    
+"skinner":{"stat": [ 0, 0, 3, 1, 1],"skill":"charm"}}
