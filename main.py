@@ -21,7 +21,7 @@ class unit(object):
     def found(self, s):
         return (self.active and (s.lower() in self.name.lower()))
     def display(self):
-        if self.active: return self.name+" "+self.classe
+        if self.active: return self.name.ljust(10)+" "+self.classe.ljust(10)
 
 class character(unit):
     def __init__(self, n, c, st=[0, 0, 0, 0, 0], sk=''):
@@ -33,9 +33,9 @@ class character(unit):
         self.skill = sk
         return
     def display(self):
-        r = unit.display(self)+'\n'
-        r+= '['+str(self.level)+']['+str(self.hp)+']'+'\n'
-        r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats)))+'\n'
+        r = unit.display(self)+'\t'
+        r+= '['+str(self.level)+']['+str(self.hp)+']'+'\t'
+        r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats))).ljust(10)+'\t'
         r+= 'skill:'+self.skill
         return r
 
