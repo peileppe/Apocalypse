@@ -33,14 +33,10 @@ class character(unit):
         self.skill = sk
         return
     def display(self):
-        sm=0
-        r = unit.display(self)
-        r+= '['+str(self.level)+']['+str(self.hp)+']'
-        r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats)))
+        r = unit.display(self)+'\n'
+        r+= '['+str(self.level)+']['+str(self.hp)+']'+'\n'
+        r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats)))+'\n'
         r+= 'skill:'+self.skill
-        for i in (self.stats):
-            sm+=i
-        r+= 'sum:'+(str(sm))
         return r
 
 class player():
