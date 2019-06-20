@@ -4,42 +4,8 @@
 import readline
 import json
 from aw_log import logger
-from aw_tools import menu
-
-class unitTest(object):
-    def __init__(self, f1, n='default'):
-        self.name = n
-        self.myfunc = f1
-        return
-    def display(self):
-        return '- '+self.name
-
-def listing(x, list1):
-    for i in list1:
-        print(i.display())
-    return
-def promote(i, list1):
-    listing(i, list1)
-    print('promote ')
-    return
-def qExit(z, list1):
-    print('Bye!')
-    return
-
-def mainTest():
-    o, MENU = [], []
-    o.append(unit(listing, 'Listing'))
-    o.append(unit(promote, 'promote'))
-    o.append(unit(qExit, 'quit'))
-    for i in o:
-        MENU.append(i.name)
-    while(True):
-        x, y = menu(MENU)
-        print (str(x)+' '+y)
-        o[x].myfunc(x, o)
-        if x == 2:
-            break
-    return
+from aw_tools import menu, dice
+from aw_names import namePick
 
 class unit(object):
     def __init__(self, name='', classe=''):
@@ -67,9 +33,6 @@ class character(unit):
         r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats))).ljust(10)+'\t'
         r+= 'skill:'+self.skill
         return r
-    def displayf(self):
-        r='\''+self.skill+'\''+':'+self.skill+','
-        return r
 
 class player():
     def __init__(self):
@@ -81,35 +44,53 @@ class player():
         for c in awcls:
             chList.append(c)
         for i, k in enumerate(chList):
-            self.characters.append(character('name='+str(i), k, awcls[k]['stat'],awcls[k]['skill']))
+            self.characters.append(character(namePick(), k, awcls[k]['stat'],awcls[k]['skill']))
         return
 
-def confuse():
-    print('confusing')
+def confuse(c):
+    action='confusing'
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def doublestrike():
-    print('double striking')
+def doublestrike(c):
+    action=('double striking')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def hack():
-    print('hacking')
+def hack(c):
+    action=('hacking')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def cure():
-    print('healing')
+def cure(c):
+    action=('healing')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def charm():
-    print('charming')
+def charm(c):
+    action=('charming')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def leader():
-    print('leading')
+def leader(c):
+    action=('leading')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def diplomacy():
-    print('talking')
+def diplomacy(c):
+    action=('talking')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def rage():
-    print('berserking')
+def rage(c):
+    action=('berserking')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
-def dominate():
-    print('dominating')
+def dominate(c):
+    action=('dominating')
+    print(c.name+' try '+action)
+    print(action+' '+dice(0)[1])
     return
 
 fn_menu={
@@ -129,14 +110,9 @@ def listing(ul):
         print(i.display())
     return
 
-def listingf(ul):
-    for i in ul:
-        print(i.displayf())
-    return
-
 def listingm(ul):
     for i in ul:
-        fn_menu[i.skill]()
+        fn_menu[i.skill](i)
     return
 
 def main():
@@ -145,11 +121,15 @@ def main():
             awcl=json.load(f)
     except IOError:
         print(IOError)
+    m=[]
     p = player()
     p.starterPack(awcl)
     listing(p.characters)
-    listingf(p.characters)
     listingm(p.characters)
+    for i in p.characters:
+        m.append(i.name)
+    r=menu(m)
+    fn_menu[p.characters[r].skill](p.characters[r])(0)
     return
 
 if __name__ == "__main__":
