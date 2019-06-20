@@ -7,6 +7,7 @@ import readline
 import json
 from aw_log import logger
 from aw_tools import menu
+from aw_names import namePick 
 from aw_character import character, listing
 
 class player():
@@ -19,7 +20,7 @@ class player():
         for c in awcls:
             chList.append(c)
         for i, k in enumerate(chList):
-            self.characters.append(character('name='+str(i), k, awcls[k]['stat'],awcls[k]['skill']))
+            self.characters.append(character(namePick(), k, awcls[k]['stat'],awcls[k]['skill']))
         return
 
 def main():
