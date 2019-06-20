@@ -60,13 +60,15 @@ class character(unit):
         self.countdown = {}
         self.stats = st # str(hard)0, int(sharp)1, chm(hot)2, dex(cool)3, psi(weird)4
         self.skill = sk
-        self.func = hack
         return
     def display(self):
         r = unit.display(self)+'\t'
         r+= '['+str(self.level)+']['+str(self.hp)+']'+'\t'
         r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats))).ljust(10)+'\t'
         r+= 'skill:'+self.skill
+        return r
+    def displayf(self):
+        r='\''+self.skill+'\''+':'+self.skill+','
         return r
 
 class player():
@@ -82,15 +84,59 @@ class player():
             self.characters.append(character('name='+str(i), k, awcls[k]['stat'],awcls[k]['skill']))
         return
 
-def hack():
-    print('function hack')
+def confuse():
+    print('confusing')
     return
+def doublestrike():
+    print('double striking')
+    return
+def hack():
+    print('hacking')
+    return
+def cure():
+    print('healing')
+    return
+def charm():
+    print('charming')
+    return
+def leader():
+    print('leading')
+    return
+def diplomacy():
+    print('talking')
+    return
+def rage():
+    print('berserking')
+    return
+def dominate():
+    print('dominating')
+    return
+
+fn_menu={
+'confuse':confuse,
+'doublestrike':doublestrike,
+'hack':hack,
+'cure':cure,
+'charm':charm,
+'leader':leader,
+'diplomacy':diplomacy,
+'rage':rage,
+'dominate':dominate
+}
 
 def listing(ul):
     for i in ul:
         print(i.display())
-        if(i.func==hack):
-            i.func()
+    return
+
+def listingf(ul):
+    for i in ul:
+        print(i.displayf())
+    return
+
+def listingm(ul):
+    for i in ul:
+        fn_menu[i.skill]()
     return
 
 def main():
@@ -102,6 +148,8 @@ def main():
     p = player()
     p.starterPack(awcl)
     listing(p.characters)
+    listingf(p.characters)
+    listingm(p.characters)
     return
 
 if __name__ == "__main__":
