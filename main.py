@@ -13,7 +13,7 @@ except NameError:
     pass
 
 class unit(object):
-    def __init__(self, name='Brenner', classe='Gunlugger'):
+    def __init__(self, name='', classe=''):
         self.name=name
         self.classe=classe
         self.active=True
@@ -24,19 +24,23 @@ class unit(object):
         if self.active: return self.name+" "+self.classe
 
 class character(unit):
-    def __init__(self, n, c, hard=0, sharp=0, hot=0, cool=0, weird=0, sk=''):
+    def __init__(self, n, c, st=[0, 0, 0, 0, 0], sk=''):
         unit.__init__(self, n,c)
         self.level = 1
         self.hp = 10
         self.countdown = {}
-        self.stats = [hard, sharp, hot, cool, weird] # str(hard)0, int(sharp)1, chm(hot)2, dex(cool)3, psi(weird)4
+        self.stats = st # str(hard)0, int(sharp)1, chm(hot)2, dex(cool)3, psi(weird)4
         self.skill = sk
         return
     def display(self):
+        sm=0
         r = unit.display(self)
         r+= '['+str(self.level)+']['+str(self.hp)+']'
         r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats)))
         r+= 'skill:'+self.skill
+        for i in (self.stats):
+            sm+=i
+        r+= 'sum:'+(str(sm))
         return r
 
 class player():
@@ -49,7 +53,7 @@ class player():
         for c in awcls:
             chList.append(c)
         for i, k in enumerate(chList):
-            self.characters.append(character('name='+str(i), k, awcls[k]['stat'][0],awcls[k]['stat'][1],0,0,0))
+            self.characters.append(character('name='+str(i), k, awcls[k]['stat'],awcls[k]['skill']))
         return
 
 def listing(ul):
