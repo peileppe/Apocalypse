@@ -1,25 +1,12 @@
 #!/usr/bin/python
-# menu
+# aw_character
 # ===================================================================
 import readline
+import json
+from aw_log import logger
+from aw_tools import menu
 
-try:
-    input = raw_input
-except NameError:
-    pass
-
-def menu(listMenu):
-    o, x = 0, []
-    for i in listMenu:
-        print (str(o)+'. '+i)
-        x.append(str(o))
-        o+=1
-    j=input('Select option : ')
-    while (j  not in (x)):
-        j=input('Please choose a valid option :')
-    return int(j), listMenu[int(j)]
-
-class unit(object):
+class unitTest(object):
     def __init__(self, f1, n='default'):
         self.name = n
         self.myfunc = f1
@@ -39,7 +26,7 @@ def qExit(z, list1):
     print('Bye!')
     return
 
-def main():
+def mainTest():
     o, MENU = [], []
     o.append(unit(listing, 'Listing'))
     o.append(unit(promote, 'promote'))
@@ -52,6 +39,69 @@ def main():
         o[x].myfunc(x, o)
         if x == 2:
             break
+    return
+
+class unit(object):
+    def __init__(self, name='', classe=''):
+        self.name=name
+        self.classe=classe
+        self.active=True
+        return
+    def found(self, s):
+        return (self.active and (s.lower() in self.name.lower()))
+    def display(self):
+        if self.active: return self.name.ljust(10)+" "+self.classe.ljust(10)
+
+class character(unit):
+    def __init__(self, n, c, st=[0, 0, 0, 0, 0], sk=''):
+        unit.__init__(self, n,c)
+        self.level = 1
+        self.hp = 10
+        self.countdown = {}
+        self.stats = st # str(hard)0, int(sharp)1, chm(hot)2, dex(cool)3, psi(weird)4
+        self.skill = sk
+        self.func = hack
+        return
+    def display(self):
+        r = unit.display(self)+'\t'
+        r+= '['+str(self.level)+']['+str(self.hp)+']'+'\t'
+        r+= 'stats:'+','.join(str(self.stats[i]) for i in range(len(self.stats))).ljust(10)+'\t'
+        r+= 'skill:'+self.skill
+        return r
+
+class player():
+    def __init__(self):
+        self.characters = []
+        self.countdowns = {}
+        return
+    def starterPack(self, awcls):
+        chList=[]
+        for c in awcls:
+            chList.append(c)
+        for i, k in enumerate(chList):
+            self.characters.append(character('name='+str(i), k, awcls[k]['stat'],awcls[k]['skill']))
+        return
+
+def hack():
+    print('function hack')
+    return
+
+def listing(ul):
+    for i in ul:
+        print(i.display())
+        if(i.func==hack):
+            i.func()
+    return
+
+def main():
+    try:
+        with open('AW-db/aw_classes.json') as f:
+            awcl=json.load(f)
+    except IOError:
+        print(IOError)
+    p = player()
+    p.starterPack(awcl)
+    listing(p.characters)
     return
 
 if __name__ == "__main__":
