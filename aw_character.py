@@ -49,48 +49,39 @@ class player():
 
 def confuse(c):
     action='confusing'
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def doublestrike(c):
     action=('double striking')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def hack(c):
     action=('hacking')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def cure(c):
     action=('healing')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def charm(c):
     action=('charming')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def leader(c):
     action=('leading')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def diplomacy(c):
     action=('talking')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def rage(c):
     action=('berserking')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 def dominate(c):
     action=('dominating')
-    print(c.name+' try '+action)
-    print(action+' '+dice(0)[1])
+    print(c.name+' try '+action+'='+dice(0)[1])
     return
 
 fn_menu={
@@ -129,7 +120,8 @@ def main():
     for i in p.characters:
         m.append(i.name)
     r=menu(m)
-    fn_menu[p.characters[r].skill](p.characters[r])(0)
+    i=p.characters[r[0]]
+    fn_menu[i.skill](i)
     return
 
 if __name__ == "__main__":
