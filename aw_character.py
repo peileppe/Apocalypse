@@ -56,7 +56,7 @@ class character(unit):
     def __init__(self, n, c, st=[0, 0, 0, 0, 0], sk=''):
         unit.__init__(self, n,c)
         self.level = 1
-        self.hp = 10
+        self.hp = 11+st[0]
         self.countdown = {}
         self.stats = st # str(hard)0, int(sharp)1, chm(hot)2, dex(cool)3, psi(weird)4
         self.skill = sk
