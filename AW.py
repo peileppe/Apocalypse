@@ -23,8 +23,6 @@ def newGame():
     m=[]
     for i in p.characters:
         m.append(i.display())
-    r=menu(m)
-    print('selected:'+p.characters[r[0]].display())
     return
 
 def selectCharacter(p):
