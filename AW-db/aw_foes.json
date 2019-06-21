@@ -1,0 +1,55 @@
+{
+"1": 
+{"punk": {"stat":       [0, 0, 0, 0, 0], "skill": "flee"},
+"giant rat": {"stat":   [0, 0, 0, 0, 0], "skill": "Flee"},
+"goth": {"stat":        [0, 0, 0, 0, 0], "skill": "Flee"}, 
+"giant spider": {"stat":[0, 1, 1, 0, 0], "skill": "Poison"}, 
+"level1 robot": {"stat":[1, 0, 0, 1, 0], "skill": "hack"}}, 
+"2": 
+{
+"skinner": {"stat":     [0, 2, 0, 1, 1], "skill": "Charm"}, 
+"zombie": {"stat":      [1, 1, 1, 0, 0], "skill": "Fear"}, 
+}, 
+"3": 
+{
+"hornet": {"stat":      [1, 1, 0, 1, 2], "skill": "Poison"}, 
+"warrior": {"stat":     [1, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"mutant": {"stat":      [1, 0, 1, 0, 0], "skill": "contaminate"}
+}, 
+"4": 
+{
+"cyborg": {"stat":      [2, 1, 0, 1, 2], "skill": "Poison"}, 
+"biker": {"stat":       [2, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"giant mutant": {"stat":[2, 0, 1, 0, 0], "skill": "contaminate"}
+}, 
+"5": 
+{
+"giant cyborg": {"stat": [3, 1, 0, 1, 2], "skill": "Poison"}, 
+"commando": {"stat":     [2, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"armored mutant":{"stat":[2, 0, 1, 0, 0], "skill": "contaminate"}
+}, 
+"6": 
+{
+"mutant snake": {"stat": [3, 1, 0, 1, 2], "skill": "Poison"}, 
+"elite warrior": {"stat":[3, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"cyborg mutant": {"stat":[2, 0, 1, 0, 0], "skill": "contaminate"}
+}, 
+"7": 
+{
+"mutant scorpio": {"stat":[4, 1, 0, 1, 2], "skill": "Poison"}, 
+"mutant warrior": {"stat":[3, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"juggernaut": {"stat":    [3, 0, 1, 0, 0], "skill": "contaminate"}
+}, 
+"8": 
+{
+"mutant spider": {"stat":[4, 1, 0, 1, 2], "skill": "Poison"}, 
+"bozz": {"stat":         [4, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"furiosq": {"stat":      [3, 0, 1, 0, 0], "skill": "smite"}
+}, 
+"9": 
+{
+"mutant cyber snake": {"stat":[4, 1, 0, 1, 2], "skill": "Poison"}, 
+"mutant bozz": {"stat":       [4, 0, 1, 0, 0], "skill": "Doublestrike"}, 
+"giant juggernaut": {"stat":  [4, 0, 1, 0, 0], "skill": "contaminate"}
+}
+}
