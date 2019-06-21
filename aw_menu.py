@@ -7,7 +7,7 @@ def longest_in_the_list(l):
     # return the size of the longest string in the list
     return len(max(l,key=len))
 
-def display_box(list1):
+def display_box(list1, presskey=True):
     # display the list in a box / not a menu
     maxx = longest_in_the_list(list1) + 4
     w1=curses.newwin(len(list1)+2,maxx,curses.LINES/2-len(list1)/2,curses.COLS/2-maxx/2)
@@ -18,13 +18,14 @@ def display_box(list1):
     for item in list1:
 	    w1.addstr(line,2,str(item))
 	    line+=1
-    w1.move(0,0)
-    w1.addstr("[X]")
+    if presskey:
+        w1.move(0,0)
+        w1.addstr("[X]")
+        w1.getch()
     w1.refresh()
-    w1.getch()
     del w1panel
     return
-
+    
 def fclear(win):
     for y in range(0, curses.LINES - 1):
         for x in range(0, curses.COLS):

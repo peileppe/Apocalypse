@@ -25,30 +25,31 @@ def newGame():
         m.append(i.display())
     return p
 
+def menuGame(m,w):
+    fclear(w)
+    r=menu(m,2, 5)
+    return r
+
 def selectCharacter(p):
     m=[]
     for i,c in enumerate(p.characters):
         m.append(str(i)+' '+c.name+' '+c.classe)
     r=menu(m, 4, 12)
     show(['selected',m[r]])
-    return p.characters[r]
-
-def menuGame(m,w):
-    fclear(w)
-    r=menu(m,2, 5)
     return r
 
-def startGame(p,w):
+def startGame(p,w,s):
     m=['Town','Gear','Mission','Exit']
-    r=menu(m,8, 22)
+    r=menu(m,24, 5 )
+    n=p.characters[s].name
     while (r!=len(m)-1):
         if r==0:
-            show(['Going to Town'])
+            show([n,'Going to Town'], False)
         elif r==1:
-            show(['listing Gear'])
+            show([n,'listing Gear'], False)
         elif r==2:
-            show(['Going in Mission'])
-        r=menu(m,8,22)
+            show([n,'Going in Mission'], False)
+        r=menu(m,24,5)
     return
 
 def main(self):
@@ -65,11 +66,13 @@ def main(self):
     while r!=len(m)-1:
         if r==0:
             p=newGame()
+            show(['New Game'])
         elif r==1:
             p=loadAW()
+            show(['Game loaded'])
         elif r==2:
-            selectCharacter(p)
-            startGame(p,win)
+            s=selectCharacter(p)
+            startGame(p,win,s)
         elif r==3:
             saveAW(p)
             show(['Game Saved'])
