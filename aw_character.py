@@ -46,6 +46,11 @@ class player():
         for i, k in enumerate(chList):
             self.characters.append(character(namePick(), k, awcls[k]['stat'],awcls[k]['skill']))
         return
+    def display(self):
+        r=''
+        for i in self.characters:
+            r+=i.display()+'\n'
+        return r
 
 def confuse(c):
     action='confusing'
@@ -96,11 +101,6 @@ fn_menu={
 'dominate':dominate
 }
 
-def listing(ul):
-    for i in ul:
-        print(i.display())
-    return
-
 def listingm(ul):
     for i in ul:
         fn_menu[i.skill](i)
@@ -115,7 +115,7 @@ def main():
     m=[]
     p = player()
     p.starterPack(awcl)
-    listing(p.characters)
+    print(p.display())
     listingm(p.characters)
     for i in p.characters:
         m.append(i.name)
