@@ -3,7 +3,7 @@
 # ===================================================================
 
 import shelve, json
-from aw_character import player, listing, listingm, fn_menu
+from aw_character import player, listingm, fn_menu
 from aw_tools import menu
 
 def loadAW():
@@ -28,7 +28,6 @@ def main():
     m=[]
     p = player()
     p.starterPack(awcl)
-    listing(p.characters)
     listingm(p.characters)
     for i in p.characters:
         m.append(i.name)
