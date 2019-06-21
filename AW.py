@@ -6,11 +6,11 @@
 import curses
 import readline
 import json, shelve
-from aw_log import logger
 from aw_save import loadAW, saveAW
 from aw_names import namePick 
 from aw_character import character, player
-from aw_menu import run_menu as menu, display_box as show
+from aw_menu import fclear,run_menu as menu, display_box as show
+from aw_debug import logger
 
 def newGame():
     try:
@@ -27,6 +27,20 @@ def newGame():
     print('selected:'+p.characters[r[0]].display())
     return
 
+def selectCharacter(p):
+    m=[]
+    for i,c in enumerate(p.characters):
+        m.append(str(i)+' '+c.name+' '+c.classe)
+    r=menu(m, 5, 10)
+    show(['selected',m[r]])
+    return p.characters[r]
+
+def menuGame(w):
+    fclear(w)
+    m=['New Game','Load Game','Select Team','Quit']
+    r=menu(m,5, 10)
+    return r
+
 def main(self):
     win=curses.initscr()
     try:
@@ -36,11 +50,15 @@ def main(self):
         exit()
     # p = player()
     p = db['AW']
-    m=[]
-    for i,c in enumerate(p.characters):
-        m.append(str(i)+' '+c.name+' '+c.classe)
-    r=menu(m, 5, 10)
-    show(['selected',m[r]])
+    r=menuGame(win)
+    while r!=3:
+        if r==0:
+            newGame()
+        elif r==1:
+            loadAW()
+        elif r==2:
+            selectCharacter(p)
+        r=menuGame(win)
     curses.endwin()
     return
 

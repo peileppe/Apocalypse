@@ -3,7 +3,7 @@
 # ===================================================================
 import readline
 import json
-from aw_log import logger
+from aw_debug import logger
 from aw_tools import menu, dice
 from aw_names import namePick
 

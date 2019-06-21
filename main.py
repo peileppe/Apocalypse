@@ -5,7 +5,7 @@
 
 import readline
 import json, shelve
-from aw_log import logger
+from aw_debug import logger
 from aw_tools import menu
 from aw_save import loadAW, saveAW
 from aw_names import namePick 
