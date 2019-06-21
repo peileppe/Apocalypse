@@ -38,13 +38,11 @@ def display_menu(ws,x1,y1,menu1,attribut1):
     if the item is a list (or a tuple) then it only print the first item of that list/tuple
     """
     current_option=0
-    logger.error('Y:'+str(y1)+'X:'+str(x1)+'A:'+str(attribut1[current_option]))
     for o in menu1:
         if type(o)  == str:
             o=str(current_option)+". "+o
         elif type(o) == tuple or type(o) == list:
             o=str(current_option)+". "+o[0]
-        logger.error('Y:'+str(y1)+'X:'+str(x1)+'O:'+str(o)+'A:'+str(attribut1[current_option]))
         ws.addstr(y1,x1,o,attribut1[current_option])
         ws.clrtoeol()
         y1+=1

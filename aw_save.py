@@ -7,13 +7,13 @@ from aw_character import player, listingm, fn_menu
 from aw_tools import menu
 
 def loadAW():
-    print('Loading ...')
+    #print('Loading ...')
     db = shelve.open('saves/aw_saves')
     p = db['AW']
     return p
 
 def saveAW(p):
-    print('Saving ...')
+    #print('Saving ...')
     db = shelve.open('saves/aw_saves')
     db['AW'] = p
     db.close()
