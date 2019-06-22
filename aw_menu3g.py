@@ -50,8 +50,8 @@ def refresh(win):
     return
 
 def getch(win):
-    action=''
-    while action!=ord('q'):
+    action=None
+    while action==None: #ord('q'):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -73,13 +73,13 @@ def display_box(w1,list1, presskey=True):
     #w1=curses.newwin(len(list1)+2,maxx,AREA_WIDTH/2-len(list1)/2,AREA_HEIGHT/2-maxx/2)
     #w1panel=panel.new_panel(w1)
     #w1.box()
-    yy, xx= 80, 20#w1.getmaxyx()
-    line=1
+    yy, xx= 40, 40#w1.getmaxyx()
+    line=xx
     for item in list1:
-	    addstr(w1,line,2,str(item))
+	    addstr(w1,line,yy,str(item).ljust(maxx))
 	    line+=1
     if presskey:
-        i=getch()
+        i=getch(w1)
     refresh(w1)
     return
     
@@ -90,19 +90,20 @@ def fclear(win):
     refresh(win)
     return
 
-def display_menu(ws,x1,y1,menu1,attribut1):
+def display_menu(ws,x1,y1,menu1, sel): # sel = current option
     """
     display each item in the list as an option in the menu
     if the item is a list (or a tuple) then it only print the first item of that list/tuple
     """
+    logger.debug('current selection:'+str(sel))
     current_option=0
-    for o in menu1:
+    for s, o in enumerate(menu1):
         if type(o)  == str:
             o=str(current_option)+". "+o
         elif type(o) == tuple or type(o) == list:
             o=str(current_option)+". "+o[0]
-        addstr(ws,y1,x1,o) #,attribut1[current_option])
-        #ws.clrtoeol()
+        if s==sel: o+='<<'
+        addstr(ws,y1,x1,o.ljust(20)) #,attribut1[current_option])
         y1+=1
         current_option+=1
     refresh(ws)
@@ -111,45 +112,30 @@ def run_menu(wmenu,menu1,x=0,y=0, subMenu=False):
     """
     will display the menu at x, y on a newly created window
     then display menu to relative coordinates in that new window called wmenu
-    see display_menu above
     """
     max_length = longest_in_the_list(menu1)+4
     max_option = len(menu1)
     current_option=0
     option_selected=-1
-    #wmenu=curses.newwin(max_option ,max_length ,y ,x )
-    #menupanel = panel.new_panel(wmenu)
     color=WHITE
-    #curses.init_pair(color, curses.COLOR_BLACK, curses.COLOR_WHITE)
-    #wmenu.bkgdset(ord(' '), curses.color_pair(color))
-    #wmenu.keypad(1)
     refresh(wmenu)
     while option_selected == -1:
-	    #attribut=[curses.A_NORMAL]*max_option
-	    #attribut[current_option]=curses.A_REVERSE+curses.A_BOLD
-	    display_menu(wmenu,0,0,menu1,0)
-	    a=getch(wmenu)
-	    if   a==KEY_DOWN:
-		    current_option+=1
-	    elif a==KEY_UP:
-		    current_option-=1
-	    elif a==ord('\n') or a == 32 :
-	    # validation can be done by CR or space bar
-		    option_selected=current_option
-		    if subMenu:
-			    del menupanel
-			    panel.update_panels()
-	    elif a in range(ord('0'),ord('0')+max_option):
-	    # in case key pressed is a number
-		    current_option=a-ord('0')
-		    option_selected=current_option
-		    if subMenu:
-			    del menupanel
-			    panel.update_panels()
-	    if current_option>max_option-1:
-		    current_option=max_option-1
-	    elif current_option <0:
-		    current_option=0
+        display_menu(wmenu,0,0,menu1,current_option)
+        a=getch(wmenu)
+        logger.warning('after getch:'+str(a))
+        if   a==KEY_DOWN:
+            current_option+=1
+        elif a==KEY_UP:
+            current_option-=1
+        elif a==ord('\n') or a == 32 : # validation can be done by CR or space bar
+            option_selected=current_option
+        elif a in range(ord('0'),ord('0')+max_option): # in case key pressed is a number
+            current_option=a-ord('0')
+            option_selected=current_option
+        if current_option>max_option-1:
+            current_option=max_option-1
+        elif current_option <0:
+            current_option=0
     return option_selected
 
 def main():
@@ -161,7 +147,7 @@ def main():
     l=[]
     l.append('option selected')
     l.append(str(r)+' '+m[r])
-    display_box(win,l)
+    display_box(win,l,False)
     pygame.quit()
     return
 
