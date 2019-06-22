@@ -24,7 +24,7 @@ def newGame():
         m.append(i.display())
     r=menu(m)
     print('selected:'+p.characters[r[0]].display())
-    return
+    return p
 
 def main():
     try:
@@ -32,9 +32,11 @@ def main():
     except IOError:
         print(IOError)
         exit()
-    # p = player()
-    p = db['AW3']
-    print(p.display())
+    #p = db['AW3']
+    p = newGame()
+    db['AW3']=p
+    #print(p.display())
+    db.close()
     return
 
 if __name__ == "__main__":
