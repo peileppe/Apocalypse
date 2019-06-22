@@ -1,15 +1,15 @@
 #!/usr/bin/python
-#  AW.py - python2 using curses
+#  AW3g.py - python3 using pycurses
 # ===================================================================
 # 
 
-import curses
+import pycurse, pygame
 import readline
 import json, shelve
 from aw_save import loadAW, saveAW
 from aw_names import namePick 
 from aw_character import character, player
-from aw_menu import fclear,run_menu as menu, display_box as show
+from aw_menu3g import fclear,run_menu as menu, display_box as show
 from aw_debug import logger
 
 def newGame():
@@ -55,7 +55,7 @@ def startGame(p,w,s):
 def main(self):
     win=curses.initscr()
     try:
-        db=shelve.open('saves/aw_saves')
+        db=shelve.open('saves/aw_saves3')
     except IOError:
         print(IOError)
         exit()
