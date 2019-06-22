@@ -43,22 +43,20 @@ def addch(win, y, x, color, symbol=None):
     return 
 
 def refresh(win):
-    #global mainClock
     win.update()
     pygame.display.update()    
-    #mainClock.tick(FPS)    
     return
 
 def getch(win):
     action=None
-    while action==None: #ord('q'):
+    while action==None: 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 action = event.key
-                logger.debug('key pressed '+str(action))
+                #logger.debug('key pressed '+str(action))
             elif event.type == pygame.KEYUP:
                 action = None
     return action
@@ -69,24 +67,23 @@ def longest_in_the_list(l):
 
 def display_box(w1,list1, presskey=True):
     # display the list in a box / not a menu
-    maxx = longest_in_the_list(list1) + 4
-    #w1=curses.newwin(len(list1)+2,maxx,AREA_WIDTH/2-len(list1)/2,AREA_HEIGHT/2-maxx/2)
-    #w1panel=panel.new_panel(w1)
-    #w1.box()
+    maxx = longest_in_the_list(list1) + 8
     yy, xx= 40, 40#w1.getmaxyx()
     line=xx
     for item in list1:
 	    addstr(w1,line,yy,str(item).ljust(maxx))
 	    line+=1
+    refresh(w1)
     if presskey:
         i=getch(w1)
-    refresh(w1)
+        fclear(w1)
+        refresh(w1)
     return
     
 def fclear(win):
     for y in range(0, AREA_WIDTH - 1):
         for x in range(0, AREA_HEIGHT):
-            addch(win,y,x,BLACK,'/')
+            addch(win,y,x,BLACK,'.')
     refresh(win)
     return
 
@@ -95,7 +92,8 @@ def display_menu(ws,x1,y1,menu1, sel): # sel = current option
     display each item in the list as an option in the menu
     if the item is a list (or a tuple) then it only print the first item of that list/tuple
     """
-    logger.debug('current selection:'+str(sel))
+    maxx = longest_in_the_list(menu1) + 8
+    #logger.debug('current selection:'+str(sel))
     current_option=0
     for s, o in enumerate(menu1):
         if type(o)  == str:
@@ -103,12 +101,12 @@ def display_menu(ws,x1,y1,menu1, sel): # sel = current option
         elif type(o) == tuple or type(o) == list:
             o=str(current_option)+". "+o[0]
         if s==sel: o+='<<'
-        addstr(ws,y1,x1,o.ljust(20)) #,attribut1[current_option])
+        addstr(ws,y1,x1,o.ljust(maxx)) 
         y1+=1
         current_option+=1
     refresh(ws)
 
-def run_menu(wmenu,menu1,x=0,y=0, subMenu=False):
+def run_menu(wmenu,menu1,x=0,y=0):
     """
     will display the menu at x, y on a newly created window
     then display menu to relative coordinates in that new window called wmenu
@@ -122,12 +120,12 @@ def run_menu(wmenu,menu1,x=0,y=0, subMenu=False):
     while option_selected == -1:
         display_menu(wmenu,0,0,menu1,current_option)
         a=getch(wmenu)
-        logger.warning('after getch:'+str(a))
+        #logger.warning('after getch:'+str(a))
         if   a==KEY_DOWN:
             current_option+=1
         elif a==KEY_UP:
             current_option-=1
-        elif a==ord('\n') or a == 32 : # validation can be done by CR or space bar
+        elif a==13 or a == 32 : # validation can be done by CR or space bar
             option_selected=current_option
         elif a in range(ord('0'),ord('0')+max_option): # in case key pressed is a number
             current_option=a-ord('0')
@@ -143,11 +141,13 @@ def main():
     #win.clear()
     fclear(win)
     m = ['new Game', 'Load Game', 'Help', 'Exit']
-    r=run_menu(win,m, 5, 10)
-    l=[]
-    l.append('option selected')
-    l.append(str(r)+' '+m[r])
-    display_box(win,l,False)
+    r=0
+    while r!=3:
+        r=run_menu(win,m, 5, 10)
+        l=[]
+        l.append('option selected')
+        l.append(str(r)+' '+m[r])
+        display_box(win,l)
     pygame.quit()
     return
 
